@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+
+<html lang="ceb">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bhouse RULES — Bhouse Rules</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&amp;family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --paper:#F4F2EE;
+    --card:#FFFFFF;
+    --ink:#1B1A17;
+    --ink-soft:#6B675F;
+    --line:#E4E0D8;
+    --red:#D63A2E;
+    --red-ink:#FFFFFF;
+    --gold:#EFE0C2;
+    --gold-ink:#5A4A22;
+    --sage:#DCE6D8;
+    --sage-ink:#3A5636;
+    --sky:#DCE4EC;
+    --sky-ink:#33465C;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1180px; margin:0 auto; padding:0 28px;}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(244,242,238,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 0;
+  }
+  .brand{
+    font-family:'Fraunces',serif; font-weight:600; font-size:22px;
+    letter-spacing:0.3px;
+  }
+  .brand span{color:var(--red);}
+  .navlinks{display:flex; gap:30px; list-style:none;}
+  .navlinks a{
+    color:var(--ink); text-decoration:none; font-size:14px; font-weight:600;
+    letter-spacing:0.2px; padding-bottom:4px; border-bottom:2px solid transparent;
+    transition:border-color .2s;
+  }
+  .navlinks a:hover{border-color:var(--red);}
+  .tag-badge{
+    display:flex; align-items:center; gap:8px;
+    background:var(--ink); color:var(--paper);
+    padding:8px 16px; border-radius:999px; font-size:13px; font-weight:600;
+  }
+  .dot{width:7px;height:7px;border-radius:50%;background:#7CD98A;}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:64px 0 48px; border-bottom:1px solid var(--line);}
+  .eyebrow{
+    display:flex; align-items:center; gap:10px;
+    font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:1.5px;
+    text-transform:uppercase; color:var(--ink-soft); margin-bottom:22px;
+  }
+  .eyebrow::before{content:""; width:26px; height:1px; background:var(--red);}
+  h1.headline{
+    font-family:'Fraunces',serif; font-weight:500; font-style:normal;
+    font-size:clamp(38px,6vw,68px); line-height:1.04; letter-spacing:-0.5px;
+    max-width:850px;
+  }
+  .hl-mark{
+    background:var(--red); color:var(--red-ink);
+    padding:0 10px; display:inline-block;
+  }
+  .hero-sub{
+    max-width:600px; margin-top:26px; font-size:17px; line-height:1.65;
+    color:var(--ink-soft);
+  }
+  .hero-meta{
+    display:flex; gap:28px; margin-top:34px; flex-wrap:wrap;
+  }
+  .meta-item{display:flex; align-items:center; gap:8px; font-size:14px; color:var(--ink-soft);}
+  .meta-item b{color:var(--ink);}
+
+  /* ---------- SECTION LABEL ---------- */
+  .section-head{
+    display:flex; align-items:baseline; gap:16px; margin:70px 0 26px;
+  }
+  .section-num{
+    font-family:'JetBrains Mono',monospace; color:var(--red); font-weight:600; font-size:14px;
+  }
+  .section-title{
+    font-family:'Fraunces',serif; font-weight:500; font-size:clamp(28px,4vw,40px);
+    letter-spacing:-0.3px;
+  }
+  .section-en{
+    color:var(--ink-soft); font-size:14px; font-style:italic; margin-top:-8px; margin-bottom:26px;
+    padding-left:calc(14px + 16px + 30px);
+  }
+
+  /* ---------- CATEGORY GRID ---------- */
+  .grid{
+    display:grid; grid-template-columns:1.4fr 1fr; gap:22px;
+  }
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:18px;
+    padding:30px 30px 26px;
+  }
+  .card.wide{grid-column:1 / -1;}
+  .card h3{
+    font-family:'Fraunces',serif; font-weight:600; font-size:20px; margin-bottom:16px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .card h3 .chip{
+    font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:600;
+    background:var(--gold); color:var(--gold-ink); padding:4px 9px; border-radius:6px;
+    letter-spacing:0.5px;
+  }
+  ul.rules{list-style:none;}
+  ul.rules li{
+    position:relative; padding:10px 0 10px 26px; font-size:15px; line-height:1.6;
+    border-top:1px solid var(--line); color:var(--ink);
+  }
+  ul.rules li:first-child{border-top:none;}
+  ul.rules li::before{
+    content:"—"; position:absolute; left:0; top:10px; color:var(--red); font-weight:700;
+  }
+  ul.rules li b{font-weight:700;}
+  ul.rules li .no{
+    color:var(--red); font-weight:700;
+  }
+
+  /* highlight callout cards, echoing the reference's colored tiles */
+  .tile-row{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:22px;}
+  .tile{
+    border-radius:16px; padding:20px; font-size:14px; line-height:1.5; font-weight:600;
+  }
+  .tile.gold{background:var(--gold); color:var(--gold-ink);}
+  .tile.sage{background:var(--sage); color:var(--sage-ink);}
+  .tile.sky{background:var(--sky); color:var(--sky-ink);}
+  .tile .tile-eyebrow{
+    font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.5px;
+    text-transform:uppercase; opacity:0.7; display:block; margin-bottom:8px; font-weight:600;
+  }
+
+  /* ---------- PENALTY / SILOT STRIP ---------- */
+  .silot{
+    margin:90px 0 40px; background:var(--ink); color:var(--paper);
+    border-radius:24px; padding:50px 44px;
+  }
+  .silot .section-title, .silot .section-num{color:var(--paper);}
+  .silot .section-en{color:#B9B6AC;}
+  .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:30px;}
+  .step{
+    background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12);
+    border-radius:16px; padding:26px 22px;
+  }
+  .step.warn{border-color:rgba(239,224,194,0.4);}
+  .step.final{border-color:rgba(214,58,46,0.55); background:rgba(214,58,46,0.12);}
+  .step-num{
+    font-family:'Fraunces',serif; font-size:38px; font-weight:600; color:var(--red);
+    line-height:1; margin-bottom:14px; display:block;
+  }
+  .step h4{font-size:15px; font-weight:700; margin-bottom:8px; letter-spacing:0.2px;}
+  .step p{font-size:13.5px; color:#C9C6BC; line-height:1.55;}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    border-top:1px solid var(--line); margin-top:60px; padding:34px 0 60px;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;
+  }
+  footer p{font-size:13px; color:var(--ink-soft);}
+  .back-top{
+    font-size:13px; font-weight:700; color:var(--ink); text-decoration:none;
+    border-bottom:2px solid var(--red);
+  }
+
+  /* ---------- CONFIRM / UNDERSTOOD BUTTON ---------- */
+  .confirm-wrap{
+    margin-top:20px; padding-top:16px; border-top:1px dashed var(--line);
+    display:flex; justify-content:flex-end;
+  }
+  .confirm-btn{
+    font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600;
+    letter-spacing:0.4px; text-transform:uppercase;
+    padding:10px 18px; border-radius:999px; border:1.5px solid var(--line);
+    background:var(--paper); color:var(--ink-soft);
+    cursor:not-allowed; transition:all .25s ease;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .confirm-btn .ring{
+    width:16px; height:16px; border-radius:50%;
+    border:2px solid var(--ink-soft); border-top-color:var(--red);
+    animation:spin 1s linear infinite; flex:0 0 auto;
+  }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+  .confirm-btn.ready{
+    cursor:pointer; border-color:var(--red); color:var(--red); background:var(--card);
+  }
+  .confirm-btn.ready:hover{ background:var(--red); color:#fff; }
+  .confirm-btn.done{
+    cursor:default; border-color:var(--sage-ink); background:var(--sage); color:var(--sage-ink);
+  }
+  .confirm-btn.done .check{
+    display:inline-block; width:16px; height:16px; border-radius:50%;
+    background:var(--sage-ink); color:var(--sage); font-size:11px; line-height:16px;
+    text-align:center; flex:0 0 auto;
+  }
+  .card.card-done{ box-shadow:0 0 0 1.5px var(--sage-ink) inset; }
+
+  @media (max-width:760px){
+    .navlinks{display:none;}
+    .grid{grid-template-columns:1fr;}
+    .tile-row{grid-template-columns:1fr;}
+    .steps{grid-template-columns:1fr;}
+    .section-en{padding-left:0;}
+  }
+</style>
+</head>
+<body>
+<header>
+<div class="wrap">
+<nav>
+<div class="brand">BALAY <span>RULES</span></div>
+<ul class="navlinks">
+<li><a href="#banyo">Banyo</a></li>
+<li><a href="#sala">Sala</a></li>
+<li><a href="#kwarto">Kwarto</a></li>
+<li><a href="#silot">Silot</a></li>
+</ul>
+<div class="tag-badge"><span class="dot"></span> House Handbook</div>
+</nav>
+</div>
+</header>
+<main class="wrap">
+<section class="hero">
+<p class="eyebrow">Boarding House Handbook · Effective for all boarders</p>
+<h1 class="headline">Kining mga Lagda Naghatag Katahom sa <span class="hl-mark">Panimalay</span> Nato Tanan</h1>
+<p class="hero-sub">Gitakda kini nga mga lagda alang sa banyo, sala, ug kwarto aron mapadayon ang kahinlo, kaluwasan, ug pagtinabangay sa matag boarder. Basaha pag-ayo — ang matag lagda naa alang sa kaayohan sa tanan.</p>
+<div class="hero-meta">
+<div class="meta-item"><b>4</b> seksyon</div>
+<div class="meta-item"><b>Quiet Hours</b> 9:00 PM – 6:00 AM</div>
+<div class="meta-item"><b>3</b> ka lebel sa silot</div>
+</div>
+</section>
+<!-- ================= BANYO ================= -->
+<section id="banyo">
+<div class="section-head">
+<span class="section-num">01</span>
+<h2 class="section-title">Banyo</h2>
+</div>
+<p class="section-en">Bathroom rules — cleanliness, disposal, and water use</p>
+<div class="grid">
+<div class="card">
+<h3>Kahinlo sa Kasilyas ug Banyo <span class="chip">DAILY</span></h3>
+<ul class="rules">
+<li><b>I-flush</b> ang inodoro human sa matag gamit.</li>
+<li><b>Ayaw paglabay</b> og tissue paper, napkin, wipes, sachet sa shampoo ug sabon, o uban pang solidong basura sa sulod sa inodoro.</li>
+<li><b>E sirado</b> ang gripo human gamiton.</li>
+</ul>
+<div class="confirm-wrap"><button class="confirm-btn" data-seconds="4" disabled="disabled" type="button">Basaha una… (4s)</button></div></div>
+<div class="card">
+<h3>Pagtipid sa Tubig <span class="chip">WATER</span></h3>
+<ul class="rules">
+<li>Gamita <b>og maalamon</b> ang tubig.</li>
+<li>Siguroha nga <b>sira ug ayo ang gripo</b> human gamiton.</li>
+<li><b>Isumbong</b> dayon ang mga tulo o problema sa tubo.</li>
+</ul>
+<div class="confirm-wrap"><button class="confirm-btn" data-seconds="4" disabled="disabled" type="button">Basaha una… (4s)</button></div></div>
+<div class="card wide">
+<h3>Husto nga Paglabay sa Basura <span class="chip">TRASH</span></h3>
+<ul class="rules">
+<li><b>Ilabay</b> ang tanang basura sa gitakdang basurahan ug ilabay kini sa <b>gawas sa balay</b> sa hustong paagi. Kay inyo man na basura, inyo na obligasyon paglabay didto sa designated area sa taas.</li>
+<li><b>Ayaw paglabay</b> og basura, sachet sa shampoo ug sabon, sa lababo, kasilyas, kanal, o palibot niini.</li>
+<li>Kinahanglan <b>sirad-an pag-ayo ang basura</b> sa dili pa ilabay aron malikayan ang baho.</li>
+</ul>
+<div class="confirm-wrap"><button class="confirm-btn" data-seconds="4" disabled="disabled" type="button">Basaha una… (4s)</button></div></div>
+</div>
+</section>
+<!-- ================= SALA ================= -->
+<section id="sala">
+<div class="section-head">
+<span class="section-num">02</span>
+<h2 class="section-title">Sala</h2>
+</div>
+<p class="section-en">Living room &amp; common area — guests, conduct, cleanliness, curfew</p>
+<div class="grid">
+<div class="card">
+<h3>Mga Bisita ug Dili Awtorisadong Tawo</h3>
+<ul class="rules">
+<li>Ang pagdala og bisita o pagpasulod sa bisan kinsa nga <b>dili awtorisado</b> sulod sa boarding house o gi-abangan nga kwarto hugot nga <span class="no">gidili</span>, gawas kong ginikanan o igsoon nga adunay pahibalo sa tag-iya.</li>
+<li>Ang pagpabilin sa bisita sa tibuok gabii <b>dili gitugotan</b> gawas kon gitugotan sa tag-iya.</li>
+<li>Responsable ang boarders sa hingpit sa kinaiya ug aksyon sa ilang mga giaprobahang bisita.</li>
+</ul>
+<div class="confirm-wrap"><button class="confirm-btn" data-seconds="4" disabled="disabled" type="button">Basaha una… (4s)</button></div></div>
+<div class="card">
+<h3>Alkohol, Panigarilyo, Iligal nga Kalihokan</h3>
+<ul class="rules">
+<li>Ang pag-inom og <b>ilimnong alkohol</b> sulod sa boarding house hugot nga <span class="no">gidili</span>.</li>
+<li>Ang <b>panigarilyo, vaping, sugal, iligal nga droga</b> hugot nga <span class="no">gidili</span>.</li>
+<li>Ang boarder nga makit-an nga naglapas mahimong mag-atubang sa <b>disiplinary action</b> ug posibling ma-terminate ang pribilehiyo sa pagboard.</li>
+</ul>
+<div class="confirm-wrap"><button class="confirm-btn" data-seconds="4" disabled="disabled" type="button">Basaha una… (4s)</button></div></div>
+<div class="card">
+<h3>Kalimpyo ug Kahapsay</h3>
+<ul class="rules">
+<li>Bantayi nga <b>limpyo ug maayong pagkahan-ay</b> ang imong kwarto, koridor, kusina, kasilyas, ug tanang shared nga bahin sa balay sa tanang panahon.</li>
+<li><b>Ibalik</b> ang mga muebles ug shared nga gamit sa ilang gitakdang lugar human gamiton.</li>
+</ul>
+<div class="confirm-wrap"><button class="confirm-btn" data-seconds="4" disabled="disabled" type="button">Basaha una… (4s)</button></div></div>
+<div class="card">
+<h3>Kusina ug Panghugas og Plato</h3>
+<ul class="rules">
+<li><b>Hugasi dayon</b> ang mga plato, kutsara-tinidor, ug gamit sa pagluto human gamiton.</li>
+<li><b>Limpyohi</b> ang lababo ug ang palibot niini human manghugas.</li>
+<li><b>Ayaw pagbilin</b> og hugaw nga plato sa tibuok gabii.</li>
+</ul>
+<div class="confirm-wrap"><button class="confirm-btn" data-seconds="4" disabled="disabled" type="button">Basaha una… (4s)</button></div></div>
+<div class="card">
+<h3>Pagpugong sa Saba</h3>
+<ul class="rules">
+<li>Bantayi ang <b>kalinaw ug kahilom</b> sa tanang panahon.</li>
+<li>Istriktong <b>"Quiet Hours"</b> gikan sa <b>9:00 sa gabii</b> hangtod <b>6:00 sa buntag</b>.</li>
+<li><span class="no">Gidili</span> ang kusog nga estorya, singgit, pagkanta, pagtugtog og instrumento, telebisyon, radyo, o speaker panahon sa quiet hours.</li>
+<li>Gamita ang earphone o headphone kon mogamit og electronic device panahon sa quiet hours.</li>
+</ul>
+<div class="confirm-wrap"><button class="confirm-btn" data-seconds="4" disabled="disabled" type="button">Basaha una… (4s)</button></div></div>
+<div class="card wide">
+<h3>Pagtahod sa Uban, Curfew, ug Tubig Ilimnun</h3>
+<div class="tile-row">
+<div class="tile sage">
+<span class="tile-eyebrow">Respeto</span>
+            Tahora ang privacy, kabtangan, ug katungod sa isig ka boarder. Bisan unsang porma sa pagbully, pangharas, panghadlok, pagpanghulga, diskriminasyon, o pagpanggubat hugot nga gidili.
+          </div>
+<div class="tile sky">
+<span class="tile-eyebrow">Curfew</span>
+            Ang boarder nga muabot og gabii kinahanglan mosulod og hilom nga dili makasamok sa uban. Dili maayo ang paglahutay o pagbarog-barog sa hallway, hagdanan, o gawas sa balay kon gabii na.
+          </div>
+<div class="tile gold">
+<span class="tile-eyebrow">Tubig Ilimnun</span>
+            Ang tubig ilimnun kung magkuha sa may hagdan, bayaran dayon sa tag-iya.
+          </div>
+</div>
+<div class="confirm-wrap"><button class="confirm-btn" data-seconds="4" disabled="disabled" type="button">Basaha una… (4s)</button></div></div>
+</div>
+</section>
+<!-- ================= KWARTO ================= -->
+<section id="kwarto">
+<div class="section-head">
+<span class="section-num">03</span>
+<h2 class="section-title">Kwarto</h2>
+</div>
+<p class="section-en">Bedroom rules — electricity, security, property care, fire safety</p>
+<div class="grid">
+<div class="card wide">
+<h3>Responsableng Paggamit sa Kuryente <span class="chip">ELECTRICITY</span></h3>
+<ul class="rules">
+<li>Gamita og <b>maalamon</b> ang kuryente aron makatipid.</li>
+<li><b>Patya</b> ang suga, electric fan, charger, ug uban pang electric nga gamit kon dili gamiton.</li>
+<li>Ang high-power nga appliances sama sa <b>electric stove, rice cooker, electric kettle, heater, flat iron/plantsa</b>, ug susama nga gamit gamiton lamang kon adunay <b>pag-apruba sa tag-iya</b> ug <b>dugang na bayaran</b> — except sa rice cooker nga libre maggamit.</li>
+<li><span class="no">Gidili</span> ang dili awtorisadong pag-install o paggamit og dugang nga electrical appliances.</li>
+<li>Bisan unsang kadaot nga hinungdan sa sayop nga paggamit sa electrical equipment <b>ipabayad</b> sa boarder nga responsable.</li>
+</ul>
+<div class="confirm-wrap"><button class="confirm-btn" data-seconds="4" disabled="disabled" type="button">Basaha una… (4s)</button></div></div>
+<div class="card">
+<h3>Kaluwasan ug Seguridad</h3>
+<ul class="rules">
+<li><b>I-lock</b> ang imong kwarto sa matag pagbiya.</li>
+<li>Siguroha nga <b>hugot nga nasira</b> ang main entrance human mosulod o mogawas.</li>
+<li><b>Ayaw pagpakopya</b> og yawi kon walay nakasulat nga pagtugot sa tag-iya.</li>
+</ul>
+<div class="confirm-wrap"><button class="confirm-btn" data-seconds="4" disabled="disabled" type="button">Basaha una… (4s)</button></div></div>
+<div class="card">
+<h3>Pag-atiman sa Propyedad</h3>
+<ul class="rules">
+<li>Bisan unsang <b>kadaot sa propyedad</b> nga tinuyo o resulta sa kapasagaran <b>ipaayo o ipulihan</b> sa gasto sa boarder.</li>
+<li><b>Ayaw pagsulat, pagpako, pagbangag,</b> o pagbutang og bisan unsa sa bungbong, pultahan, o muebles kon walay pagtugot.</li>
+</ul>
+<div class="confirm-wrap"><button class="confirm-btn" data-seconds="4" disabled="disabled" type="button">Basaha una… (4s)</button></div></div>
+<div class="card wide">
+<h3>Kaluwasan sa Kalayo <span class="chip">FIRE SAFETY</span></h3>
+<ul class="rules">
+<li><span class="no">Gidili</span> ang bukas nga kalayo, kandila, insenso, pabuto, ug uban pang peligro sa kalayo.</li>
+<li><b>Ayaw sobrahi</b> og gamit ang electrical outlet o paggamit og daot nga extension cord.</li>
+<li><b>Isumbong dayon</b> ang bisan unsang kuryente o peligro sa kalayo.</li>
+</ul>
+<div class="confirm-wrap"><button class="confirm-btn" data-seconds="4" disabled="disabled" type="button">Basaha una… (4s)</button></div></div>
+</div>
+</section>
+<!-- ================= SILOT ================= -->
+<section class="silot" id="silot">
+<div class="section-head" style="margin-top:0;">
+<span class="section-num">04</span>
+<h2 class="section-title">Pagsunod ug Silot</h2>
+</div>
+<p class="section-en" style="padding-left:0; margin-bottom:6px;">Whole-house rule — escalation of discipline for violations</p>
+<p style="max-width:640px; color:#C9C6BC; font-size:15px; line-height:1.6; margin-top:14px;">Ang pagkapakyas sa pagsunod niini nga mga lagda mahimong mosangpot sa mga disiplinaryong aksyon, depende sa gibug-aton sa paglapas:</p>
+<div class="steps">
+<div class="step">
+<span class="step-num">01</span>
+<h4>Verbal nga Pasidaan</h4>
+<p>Unang lakang alang sa gagmay o unang higayon nga paglapas.</p>
+</div>
+<div class="step warn">
+<span class="step-num">02</span>
+<h4>Sinulat nga Pasidaan</h4>
+<p>Gihatag kon nagpadayon o na-usab ang paglapas human sa verbal nga pasidaan.</p>
+</div>
+<div class="step final">
+<span class="step-num">03</span>
+<h4>Suspensyon o Pagkatanggal</h4>
+<p>Dayon nga pagkatanggal sa pribilehiyo sa pagboard alang sa grabe o balik-balik nga paglapas.</p>
+</div>
+</div>
+</section>
+</main>
+<footer class="wrap">
+<p>Balay Rules · House Handbook para sa tanang boarders</p>
+<a class="back-top" href="#">Balik sa taas ↑</a>
+</footer>
+<script>
+  // Smooth-scroll nav links with offset for the sticky header
+  document.querySelectorAll('a[href^="#"]').forEach(function(link){
+    link.addEventListener('click', function(e){
+      var id = this.getAttribute('href').slice(1);
+      if(!id){
+        e.preventDefault();
+        window.scrollTo({top:0, behavior:'smooth'});
+        return;
+      }
+      var target = document.getElementById(id);
+      if(target){
+        e.preventDefault();
+        var headerH = document.querySelector('header').offsetHeight + 16;
+        var top = target.getBoundingClientRect().top + window.pageYOffset - headerH;
+        window.scrollTo({top:top, behavior:'smooth'});
+      }
+    });
+  });
+
+  // "Understood" buttons: a countdown starts once the card scrolls into view,
+  // forcing a few seconds of read-time before it becomes clickable.
+  var buttons = document.querySelectorAll('.confirm-btn');
+
+  function startCountdown(btn){
+    if(btn.dataset.started) return;
+    btn.dataset.started = "true";
+    var seconds = parseInt(btn.dataset.seconds, 10) || 4;
+    btn.innerHTML = '<span class="ring"></span> Basaha una… (' + seconds + 's)';
+
+    var timer = setInterval(function(){
+      seconds -= 1;
+      if(seconds > 0){
+        btn.innerHTML = '<span class="ring"></span> Basaha una… (' + seconds + 's)';
+      } else {
+        clearInterval(timer);
+        btn.disabled = false;
+        btn.classList.add('ready');
+        btn.textContent = "Nasabtan ✓ Klik para mo-confirm";
+      }
+    }, 1000);
+  }
+
+  buttons.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      if(!btn.classList.contains('ready')) return;
+      btn.classList.remove('ready');
+      btn.classList.add('done');
+      btn.innerHTML = '<span class="check">✓</span> Nasabtan';
+      btn.disabled = true;
+      var card = btn.closest('.card');
+      if(card) card.classList.add('card-done');
+    });
+  });
+
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        var btn = entry.target.querySelector('.confirm-btn');
+        if(btn) startCountdown(btn);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  document.querySelectorAll('.card').forEach(function(card){
+    observer.observe(card);
+  });
+</script>
+</body>
+</html>
