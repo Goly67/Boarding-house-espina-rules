@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-
 <html lang="ceb">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Bhouse RULES — Bhouse Rules </title>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&amp;family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BHOUSE RULES — BHouse Rules Journal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --paper:#F4F2EE;
@@ -183,61 +182,6 @@
     border-bottom:2px solid var(--red);
   }
 
-  /* ---------- CONFIRM / UNDERSTOOD BUTTON ---------- */
-  .confirm-wrap{
-    margin-top:20px; padding-top:16px; border-top:1px dashed var(--line);
-    display:flex; justify-content:flex-end;
-  }
-  .confirm-btn{
-    font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600;
-    letter-spacing:0.4px; text-transform:uppercase;
-    padding:10px 18px; border-radius:999px; border:1.5px solid var(--line);
-    background:var(--paper); color:var(--ink-soft);
-    cursor:not-allowed; transition:all .25s ease;
-    display:inline-flex; align-items:center; gap:8px;
-  }
-  .confirm-btn .ring{
-    width:16px; height:16px; border-radius:50%;
-    border:2px solid var(--ink-soft); border-top-color:var(--red);
-    animation:spin 1s linear infinite; flex:0 0 auto;
-  }
-  @keyframes spin{ to{ transform:rotate(360deg); } }
-  .confirm-btn.ready{
-    cursor:pointer; border-color:var(--red); color:var(--red); background:var(--card);
-  }
-  .confirm-btn.ready:hover{ background:var(--red); color:#fff; }
-  .confirm-btn.done{
-    cursor:default; border-color:var(--sage-ink); background:var(--sage); color:var(--sage-ink);
-  }
-  .confirm-btn.done .check{
-    display:inline-block; width:16px; height:16px; border-radius:50%;
-    background:var(--sage-ink); color:var(--sage); font-size:11px; line-height:16px;
-    text-align:center; flex:0 0 auto;
-  }
-  .card.card-done{ box-shadow:0 0 0 1.5px var(--sage-ink) inset; }
-
-  /* ---------- LOCK PROGRESS BAR ---------- */
-  .lock-bar{
-    position:fixed; left:0; right:0; bottom:0; z-index:60;
-    background:var(--ink); color:var(--paper);
-    padding:12px 22px; display:flex; align-items:center; justify-content:center; gap:14px;
-    font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.3px;
-    box-shadow:0 -6px 24px rgba(0,0,0,0.18);
-    transition:transform .35s ease, opacity .35s ease;
-  }
-  .lock-bar .lock-icon{font-size:14px;}
-  .lock-bar .progress-track{
-    width:120px; height:5px; border-radius:999px; background:rgba(255,255,255,0.18);
-    overflow:hidden; flex:0 0 auto;
-  }
-  .lock-bar .progress-fill{
-    height:100%; width:0%; background:var(--red); transition:width .3s ease;
-  }
-  .lock-bar.all-done{ background:var(--sage-ink); }
-  .lock-bar.all-done .progress-fill{ background:var(--sage); }
-  .lock-bar.hide{ transform:translateY(120%); opacity:0; }
-  body{ padding-bottom:56px; }
-
   @media (max-width:760px){
     .navlinks{display:none;}
     .grid{grid-template-columns:1fr;}
@@ -248,355 +192,223 @@
 </style>
 </head>
 <body>
+
 <header>
-<div class="wrap">
-<nav>
-<div class="brand">Bhouse <span>RULES</span></div>
-<ul class="navlinks">
-<li><a href="#banyo">Banyo</a></li>
-<li><a href="#sala">Sala</a></li>
-<li><a href="#kwarto">Kwarto</a></li>
-<li><a href="#silot">Silot</a></li>
-</ul>
-<div class="tag-badge"><span class="dot"></span> House Handbook</div>
-</nav>
-</div>
+  <div class="wrap">
+    <nav>
+      <div class="brand">BALAY <span>RULES</span></div>
+      <ul class="navlinks">
+        <li><a href="#banyo">Banyo</a></li>
+        <li><a href="#sala">Sala</a></li>
+        <li><a href="#kwarto">Kwarto</a></li>
+        <li><a href="#silot">Silot</a></li>
+      </ul>
+      <div class="tag-badge"><span class="dot"></span> House Handbook</div>
+    </nav>
+  </div>
 </header>
+
 <main class="wrap">
-<section class="hero">
-<p class="eyebrow">Boarding House Handbook · Effective for all boarders</p>
-<h1 class="headline">Kining mga Lagda Naghatag Katahom sa <span class="hl-mark">Panimalay</span> Nato Tanan</h1>
-<p class="hero-sub">Gitakda kini nga mga lagda alang sa banyo, sala, ug kwarto aron mapadayon ang kahinlo, kaluwasan, ug pagtinabangay sa matag boarder. Basaha pag-ayo — ang matag lagda naa alang sa kaayohan sa tanan.</p>
-<div class="hero-meta">
-<div class="meta-item"><b>4</b> seksyon</div>
-<div class="meta-item"><b>Quiet Hours</b> 9:00 PM – 6:00 AM</div>
-<div class="meta-item"><b>3</b> ka lebel sa silot</div>
-</div>
-</section>
-<!-- ================= BANYO ================= -->
-<section id="banyo">
-<div class="section-head">
-<span class="section-num">01</span>
-<h2 class="section-title">Banyo</h2>
-</div>
-<p class="section-en">Bathroom rules — cleanliness, disposal, and water use</p>
-<div class="grid">
-<div class="card">
-<h3>Kahinlo sa Kasilyas ug Banyo <span class="chip">DAILY</span></h3>
-<ul class="rules">
-<li><b>I-flush</b> ang inodoro human sa matag gamit.</li>
-<li><b>Ayaw paglabay</b> og tissue paper, napkin, wipes, sachet sa shampoo ug sabon, o uban pang solidong basura sa sulod sa inodoro.</li>
-<li><b>E sirado</b> ang gripo human gamiton.</li>
-</ul>
-<div class="confirm-wrap"><button class="confirm-btn" data-seconds="4" disabled="disabled" type="button">Basaha una… (4s)</button></div></div>
-<div class="card">
-<h3>Pagtipid sa Tubig <span class="chip">WATER</span></h3>
-<ul class="rules">
-<li>Gamita <b>og maalamon</b> ang tubig.</li>
-<li>Siguroha nga <b>sira ug ayo ang gripo</b> human gamiton.</li>
-<li><b>Isumbong</b> dayon ang mga tulo o problema sa tubo.</li>
-</ul>
-<div class="confirm-wrap"><button class="confirm-btn" data-seconds="4" disabled="disabled" type="button">Basaha una… (4s)</button></div></div>
-<div class="card wide">
-<h3>Husto nga Paglabay sa Basura <span class="chip">TRASH</span></h3>
-<ul class="rules">
-<li><b>Ilabay</b> ang tanang basura sa gitakdang basurahan ug ilabay kini sa <b>gawas sa balay</b> sa hustong paagi. Kay inyo man na basura, inyo na obligasyon paglabay didto sa designated area sa taas.</li>
-<li><b>Ayaw paglabay</b> og basura, sachet sa shampoo ug sabon, sa lababo, kasilyas, kanal, o palibot niini.</li>
-<li>Kinahanglan <b>sirad-an pag-ayo ang basura</b> sa dili pa ilabay aron malikayan ang baho.</li>
-</ul>
-<div class="confirm-wrap"><button class="confirm-btn" data-seconds="4" disabled="disabled" type="button">Basaha una… (4s)</button></div></div>
-</div>
-</section>
-<!-- ================= SALA ================= -->
-<section id="sala">
-<div class="section-head">
-<span class="section-num">02</span>
-<h2 class="section-title">Sala</h2>
-</div>
-<p class="section-en">Living room &amp; common area — guests, conduct, cleanliness, curfew</p>
-<div class="grid">
-<div class="card">
-<h3>Mga Bisita ug Dili Awtorisadong Tawo</h3>
-<ul class="rules">
-<li>Ang pagdala og bisita o pagpasulod sa bisan kinsa nga <b>dili awtorisado</b> sulod sa boarding house o gi-abangan nga kwarto hugot nga <span class="no">gidili</span>, gawas kong ginikanan o igsoon nga adunay pahibalo sa tag-iya.</li>
-<li>Ang pagpabilin sa bisita sa tibuok gabii <b>dili gitugotan</b> gawas kon gitugotan sa tag-iya.</li>
-<li>Responsable ang boarders sa hingpit sa kinaiya ug aksyon sa ilang mga giaprobahang bisita.</li>
-</ul>
-<div class="confirm-wrap"><button class="confirm-btn" data-seconds="4" disabled="disabled" type="button">Basaha una… (4s)</button></div></div>
-<div class="card">
-<h3>Alkohol, Panigarilyo, Iligal nga Kalihokan</h3>
-<ul class="rules">
-<li>Ang pag-inom og <b>ilimnong alkohol</b> sulod sa boarding house hugot nga <span class="no">gidili</span>.</li>
-<li>Ang <b>panigarilyo, vaping, sugal, iligal nga droga</b> hugot nga <span class="no">gidili</span>.</li>
-<li>Ang boarder nga makit-an nga naglapas mahimong mag-atubang sa <b>disiplinary action</b> ug posibling ma-terminate ang pribilehiyo sa pagboard.</li>
-</ul>
-<div class="confirm-wrap"><button class="confirm-btn" data-seconds="4" disabled="disabled" type="button">Basaha una… (4s)</button></div></div>
-<div class="card">
-<h3>Kalimpyo ug Kahapsay</h3>
-<ul class="rules">
-<li>Bantayi nga <b>limpyo ug maayong pagkahan-ay</b> ang imong kwarto, koridor, kusina, kasilyas, ug tanang shared nga bahin sa balay sa tanang panahon.</li>
-<li><b>Ibalik</b> ang mga muebles ug shared nga gamit sa ilang gitakdang lugar human gamiton.</li>
-</ul>
-<div class="confirm-wrap"><button class="confirm-btn" data-seconds="4" disabled="disabled" type="button">Basaha una… (4s)</button></div></div>
-<div class="card">
-<h3>Kusina ug Panghugas og Plato</h3>
-<ul class="rules">
-<li><b>Hugasi dayon</b> ang mga plato, kutsara-tinidor, ug gamit sa pagluto human gamiton.</li>
-<li><b>Limpyohi</b> ang lababo ug ang palibot niini human manghugas.</li>
-<li><b>Ayaw pagbilin</b> og hugaw nga plato sa tibuok gabii.</li>
-</ul>
-<div class="confirm-wrap"><button class="confirm-btn" data-seconds="4" disabled="disabled" type="button">Basaha una… (4s)</button></div></div>
-<div class="card">
-<h3>Pagpugong sa Saba</h3>
-<ul class="rules">
-<li>Bantayi ang <b>kalinaw ug kahilom</b> sa tanang panahon.</li>
-<li>Istriktong <b>"Quiet Hours"</b> gikan sa <b>9:00 sa gabii</b> hangtod <b>6:00 sa buntag</b>.</li>
-<li><span class="no">Gidili</span> ang kusog nga estorya, singgit, pagkanta, pagtugtog og instrumento, telebisyon, radyo, o speaker panahon sa quiet hours.</li>
-<li>Gamita ang earphone o headphone kon mogamit og electronic device panahon sa quiet hours.</li>
-</ul>
-<div class="confirm-wrap"><button class="confirm-btn" data-seconds="4" disabled="disabled" type="button">Basaha una… (4s)</button></div></div>
-<div class="card wide">
-<h3>Pagtahod sa Uban, Curfew, ug Tubig Ilimnun</h3>
-<div class="tile-row">
-<div class="tile sage">
-<span class="tile-eyebrow">Respeto</span>
+
+  <section class="hero">
+    <p class="eyebrow">Boarding House Handbook · Effective for all boarders</p>
+    <h1 class="headline">Kining mga Lagda Naghatag Katahom sa <span class="hl-mark">Panimalay</span> Nato Tanan</h1>
+    <p class="hero-sub">Gitakda kini nga mga lagda alang sa banyo, sala, ug kwarto aron mapadayon ang kahinlo, kaluwasan, ug pagtinabangay sa matag boarder. Basaha pag-ayo — ang matag lagda naa alang sa kaayohan sa tanan.</p>
+    <div class="hero-meta">
+      <div class="meta-item"><b>4</b>&nbsp;seksyon</div>
+      <div class="meta-item"><b>Quiet Hours</b>&nbsp;9:00 PM – 6:00 AM</div>
+      <div class="meta-item"><b>3</b>&nbsp;ka lebel sa silot</div>
+    </div>
+  </section>
+
+  <!-- ================= BANYO ================= -->
+  <section id="banyo">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2 class="section-title">Banyo</h2>
+    </div>
+    <p class="section-en">Bathroom rules — cleanliness, disposal, and water use</p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Kahinlo sa Kasilyas ug Banyo <span class="chip">DAILY</span></h3>
+        <ul class="rules">
+          <li><b>I-flush</b> ang inodoro human sa matag gamit.</li>
+          <li><b>Ayaw paglabay</b> og tissue paper, napkin, wipes, sachet sa shampoo ug sabon, o uban pang solidong basura sa sulod sa inodoro.</li>
+          <li><b>E sirado</b> ang gripo human gamiton.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Pagtipid sa Tubig <span class="chip">WATER</span></h3>
+        <ul class="rules">
+          <li>Gamita <b>og maalamon</b> ang tubig.</li>
+          <li>Siguroha nga <b>sira ug ayo ang gripo</b> human gamiton.</li>
+          <li><b>Isumbong</b> dayon ang mga tulo o problema sa tubo.</li>
+        </ul>
+      </div>
+      <div class="card wide">
+        <h3>Husto nga Paglabay sa Basura <span class="chip">TRASH</span></h3>
+        <ul class="rules">
+          <li><b>Ilabay</b> ang tanang basura sa gitakdang basurahan ug ilabay kini sa <b>gawas sa balay</b> sa hustong paagi. Kay inyo man na basura, inyo na obligasyon paglabay didto sa designated area sa taas.</li>
+          <li><b>Ayaw paglabay</b> og basura, sachet sa shampoo ug sabon, sa lababo, kasilyas, kanal, o palibot niini.</li>
+          <li>Kinahanglan <b>sirad-an pag-ayo ang basura</b> sa dili pa ilabay aron malikayan ang baho.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SALA ================= -->
+  <section id="sala">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Sala</h2>
+    </div>
+    <p class="section-en">Living room &amp; common area — guests, conduct, cleanliness, curfew</p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Mga Bisita ug Dili Awtorisadong Tawo</h3>
+        <ul class="rules">
+          <li>Ang pagdala og bisita o pagpasulod sa bisan kinsa nga <b>dili awtorisado</b> sulod sa boarding house o gi-abangan nga kwarto hugot nga <span class="no">gidili</span>, gawas kong ginikanan o igsoon nga adunay pahibalo sa tag-iya.</li>
+          <li>Ang pagpabilin sa bisita sa tibuok gabii <b>dili gitugotan</b> gawas kon gitugotan sa tag-iya.</li>
+          <li>Responsable ang boarders sa hingpit sa kinaiya ug aksyon sa ilang mga giaprobahang bisita.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Alkohol, Panigarilyo, Iligal nga Kalihokan</h3>
+        <ul class="rules">
+          <li>Ang pag-inom og <b>ilimnong alkohol</b> sulod sa boarding house hugot nga <span class="no">gidili</span>.</li>
+          <li>Ang <b>panigarilyo, vaping, sugal, iligal nga droga</b> hugot nga <span class="no">gidili</span>.</li>
+          <li>Ang boarder nga makit-an nga naglapas mahimong mag-atubang sa <b>disiplinary action</b> ug posibling ma-terminate ang pribilehiyo sa pagboard.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Kalimpyo ug Kahapsay</h3>
+        <ul class="rules">
+          <li>Bantayi nga <b>limpyo ug maayong pagkahan-ay</b> ang imong kwarto, koridor, kusina, kasilyas, ug tanang shared nga bahin sa balay sa tanang panahon.</li>
+          <li><b>Ibalik</b> ang mga muebles ug shared nga gamit sa ilang gitakdang lugar human gamiton.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Kusina ug Panghugas og Plato</h3>
+        <ul class="rules">
+          <li><b>Hugasi dayon</b> ang mga plato, kutsara-tinidor, ug gamit sa pagluto human gamiton.</li>
+          <li><b>Limpyohi</b> ang lababo ug ang palibot niini human manghugas.</li>
+          <li><b>Ayaw pagbilin</b> og hugaw nga plato sa tibuok gabii.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Pagpugong sa Saba</h3>
+        <ul class="rules">
+          <li>Bantayi ang <b>kalinaw ug kahilom</b> sa tanang panahon.</li>
+          <li>Istriktong <b>"Quiet Hours"</b> gikan sa <b>9:00 sa gabii</b> hangtod <b>6:00 sa buntag</b>.</li>
+          <li><span class="no">Gidili</span> ang kusog nga estorya, singgit, pagkanta, pagtugtog og instrumento, telebisyon, radyo, o speaker panahon sa quiet hours.</li>
+          <li>Gamita ang earphone o headphone kon mogamit og electronic device panahon sa quiet hours.</li>
+        </ul>
+      </div>
+
+      <div class="card wide">
+        <h3>Pagtahod sa Uban, Curfew, ug Tubig Ilimnun</h3>
+        <div class="tile-row">
+          <div class="tile sage">
+            <span class="tile-eyebrow">Respeto</span>
             Tahora ang privacy, kabtangan, ug katungod sa isig ka boarder. Bisan unsang porma sa pagbully, pangharas, panghadlok, pagpanghulga, diskriminasyon, o pagpanggubat hugot nga gidili.
           </div>
-<div class="tile sky">
-<span class="tile-eyebrow">Curfew</span>
+          <div class="tile sky">
+            <span class="tile-eyebrow">Curfew</span>
             Ang boarder nga muabot og gabii kinahanglan mosulod og hilom nga dili makasamok sa uban. Dili maayo ang paglahutay o pagbarog-barog sa hallway, hagdanan, o gawas sa balay kon gabii na.
           </div>
-<div class="tile gold">
-<span class="tile-eyebrow">Tubig Ilimnun</span>
+          <div class="tile gold">
+            <span class="tile-eyebrow">Tubig Ilimnun</span>
             Ang tubig ilimnun kung magkuha sa may hagdan, bayaran dayon sa tag-iya.
           </div>
-</div>
-<div class="confirm-wrap"><button class="confirm-btn" data-seconds="4" disabled="disabled" type="button">Basaha una… (4s)</button></div></div>
-</div>
-</section>
-<!-- ================= KWARTO ================= -->
-<section id="kwarto">
-<div class="section-head">
-<span class="section-num">03</span>
-<h2 class="section-title">Kwarto</h2>
-</div>
-<p class="section-en">Bedroom rules — electricity, security, property care, fire safety</p>
-<div class="grid">
-<div class="card wide">
-<h3>Responsableng Paggamit sa Kuryente <span class="chip">ELECTRICITY</span></h3>
-<ul class="rules">
-<li>Gamita og <b>maalamon</b> ang kuryente aron makatipid.</li>
-<li><b>Patya</b> ang suga, electric fan, charger, ug uban pang electric nga gamit kon dili gamiton.</li>
-<li>Ang high-power nga appliances sama sa <b>electric stove, rice cooker, electric kettle, heater, flat iron/plantsa</b>, ug susama nga gamit gamiton lamang kon adunay <b>pag-apruba sa tag-iya</b> ug <b>dugang na bayaran</b> — except sa rice cooker nga libre maggamit.</li>
-<li><span class="no">Gidili</span> ang dili awtorisadong pag-install o paggamit og dugang nga electrical appliances.</li>
-<li>Bisan unsang kadaot nga hinungdan sa sayop nga paggamit sa electrical equipment <b>ipabayad</b> sa boarder nga responsable.</li>
-</ul>
-<div class="confirm-wrap"><button class="confirm-btn" data-seconds="4" disabled="disabled" type="button">Basaha una… (4s)</button></div></div>
-<div class="card">
-<h3>Kaluwasan ug Seguridad</h3>
-<ul class="rules">
-<li><b>I-lock</b> ang imong kwarto sa matag pagbiya.</li>
-<li>Siguroha nga <b>hugot nga nasira</b> ang main entrance human mosulod o mogawas.</li>
-<li><b>Ayaw pagpakopya</b> og yawi kon walay nakasulat nga pagtugot sa tag-iya.</li>
-</ul>
-<div class="confirm-wrap"><button class="confirm-btn" data-seconds="4" disabled="disabled" type="button">Basaha una… (4s)</button></div></div>
-<div class="card">
-<h3>Pag-atiman sa Propyedad</h3>
-<ul class="rules">
-<li>Bisan unsang <b>kadaot sa propyedad</b> nga tinuyo o resulta sa kapasagaran <b>ipaayo o ipulihan</b> sa gasto sa boarder.</li>
-<li><b>Ayaw pagsulat, pagpako, pagbangag,</b> o pagbutang og bisan unsa sa bungbong, pultahan, o muebles kon walay pagtugot.</li>
-</ul>
-<div class="confirm-wrap"><button class="confirm-btn" data-seconds="4" disabled="disabled" type="button">Basaha una… (4s)</button></div></div>
-<div class="card wide">
-<h3>Kaluwasan sa Kalayo <span class="chip">FIRE SAFETY</span></h3>
-<ul class="rules">
-<li><span class="no">Gidili</span> ang bukas nga kalayo, kandila, insenso, pabuto, ug uban pang peligro sa kalayo.</li>
-<li><b>Ayaw sobrahi</b> og gamit ang electrical outlet o paggamit og daot nga extension cord.</li>
-<li><b>Isumbong dayon</b> ang bisan unsang kuryente o peligro sa kalayo.</li>
-</ul>
-<div class="confirm-wrap"><button class="confirm-btn" data-seconds="4" disabled="disabled" type="button">Basaha una… (4s)</button></div></div>
-</div>
-</section>
-<!-- ================= SILOT ================= -->
-<section class="silot" id="silot">
-<div class="section-head" style="margin-top:0;">
-<span class="section-num">04</span>
-<h2 class="section-title">Pagsunod ug Silot</h2>
-</div>
-<p class="section-en" style="padding-left:0; margin-bottom:6px;">Whole-house rule — escalation of discipline for violations</p>
-<p style="max-width:640px; color:#C9C6BC; font-size:15px; line-height:1.6; margin-top:14px;">Ang pagkapakyas sa pagsunod niini nga mga lagda mahimong mosangpot sa mga disiplinaryong aksyon, depende sa gibug-aton sa paglapas:</p>
-<div class="steps">
-<div class="step">
-<span class="step-num">01</span>
-<h4>Verbal nga Pasidaan</h4>
-<p>Unang lakang alang sa gagmay o unang higayon nga paglapas.</p>
-</div>
-<div class="step warn">
-<span class="step-num">02</span>
-<h4>Sinulat nga Pasidaan</h4>
-<p>Gihatag kon nagpadayon o na-usab ang paglapas human sa verbal nga pasidaan.</p>
-</div>
-<div class="step final">
-<span class="step-num">03</span>
-<h4>Suspensyon o Pagkatanggal</h4>
-<p>Dayon nga pagkatanggal sa pribilehiyo sa pagboard alang sa grabe o balik-balik nga paglapas.</p>
-</div>
-</div>
-</section>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= KWARTO ================= -->
+  <section id="kwarto">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Kwarto</h2>
+    </div>
+    <p class="section-en">Bedroom rules — electricity, security, property care, fire safety</p>
+
+    <div class="grid">
+      <div class="card wide">
+        <h3>Responsableng Paggamit sa Kuryente <span class="chip">ELECTRICITY</span></h3>
+        <ul class="rules">
+          <li>Gamita og <b>maalamon</b> ang kuryente aron makatipid.</li>
+          <li><b>Patya</b> ang suga, electric fan, charger, ug uban pang electric nga gamit kon dili gamiton.</li>
+          <li>Ang high-power nga appliances sama sa <b>electric stove, rice cooker, electric kettle, heater, flat iron/plantsa</b>, ug susama nga gamit gamiton lamang kon adunay <b>pag-apruba sa tag-iya</b> ug <b>dugang na bayaran</b> — except sa rice cooker nga libre maggamit.</li>
+          <li><span class="no">Gidili</span> ang dili awtorisadong pag-install o paggamit og dugang nga electrical appliances.</li>
+          <li>Bisan unsang kadaot nga hinungdan sa sayop nga paggamit sa electrical equipment <b>ipabayad</b> sa boarder nga responsable.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Kaluwasan ug Seguridad</h3>
+        <ul class="rules">
+          <li><b>I-lock</b> ang imong kwarto sa matag pagbiya.</li>
+          <li>Siguroha nga <b>hugot nga nasira</b> ang main entrance human mosulod o mogawas.</li>
+          <li><b>Ayaw pagpakopya</b> og yawi kon walay nakasulat nga pagtugot sa tag-iya.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Pag-atiman sa Propyedad</h3>
+        <ul class="rules">
+          <li>Bisan unsang <b>kadaot sa propyedad</b> nga tinuyo o resulta sa kapasagaran <b>ipaayo o ipulihan</b> sa gasto sa boarder.</li>
+          <li><b>Ayaw pagsulat, pagpako, pagbangag,</b> o pagbutang og bisan unsa sa bungbong, pultahan, o muebles kon walay pagtugot.</li>
+        </ul>
+      </div>
+
+      <div class="card wide">
+        <h3>Kaluwasan sa Kalayo <span class="chip">FIRE SAFETY</span></h3>
+        <ul class="rules">
+          <li><span class="no">Gidili</span> ang bukas nga kalayo, kandila, insenso, pabuto, ug uban pang peligro sa kalayo.</li>
+          <li><b>Ayaw sobrahi</b> og gamit ang electrical outlet o paggamit og daot nga extension cord.</li>
+          <li><b>Isumbong dayon</b> ang bisan unsang kuryente o peligro sa kalayo.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SILOT ================= -->
+  <section id="silot" class="silot">
+    <div class="section-head" style="margin-top:0;">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Pagsunod ug Silot</h2>
+    </div>
+    <p class="section-en" style="padding-left:0; margin-bottom:6px;">Whole-house rule — escalation of discipline for violations</p>
+    <p style="max-width:640px; color:#C9C6BC; font-size:15px; line-height:1.6; margin-top:14px;">Ang pagkapakyas sa pagsunod niini nga mga lagda mahimong mosangpot sa mga disiplinaryong aksyon, depende sa gibug-aton sa paglapas:</p>
+
+    <div class="steps">
+      <div class="step">
+        <span class="step-num">01</span>
+        <h4>Verbal nga Pasidaan</h4>
+        <p>Unang lakang alang sa gagmay o unang higayon nga paglapas.</p>
+      </div>
+      <div class="step warn">
+        <span class="step-num">02</span>
+        <h4>Sinulat nga Pasidaan</h4>
+        <p>Gihatag kon nagpadayon o na-usab ang paglapas human sa verbal nga pasidaan.</p>
+      </div>
+      <div class="step final">
+        <span class="step-num">03</span>
+        <h4>Suspensyon o Pagkatanggal</h4>
+        <p>Dayon nga pagkatanggal sa pribilehiyo sa pagboard alang sa grabe o balik-balik nga paglapas.</p>
+      </div>
+    </div>
+  </section>
+
 </main>
+
 <footer class="wrap">
-<p>Balay Rules · House Handbook para sa tanang boarders</p>
-<a class="back-top" href="#">Balik sa taas ↑</a>
+  <p>Balay Rules · House Handbook para sa tanang boarders</p>
+  <a class="back-top" href="#">Balik sa taas ↑</a>
 </footer>
-<div class="lock-bar" id="lockBar">
-  <span class="lock-icon">🔒</span>
-  <span id="lockText">Basaha ug klik ang "Nasabtan" sa matag lagda aron makapadayon</span>
-  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
-  <span id="progressCount">0 / 13</span>
-</div>
 
-<script>
-  // Smooth-scroll nav links with offset for the sticky header
-  document.querySelectorAll('a[href^="#"]').forEach(function(link){
-    link.addEventListener('click', function(e){
-      var id = this.getAttribute('href').slice(1);
-      if(!id){
-        e.preventDefault();
-        window.scrollTo({top:0, behavior:'smooth'});
-        return;
-      }
-      var target = document.getElementById(id);
-      if(target){
-        e.preventDefault();
-        var headerH = document.querySelector('header').offsetHeight + 16;
-        var top = target.getBoundingClientRect().top + window.pageYOffset - headerH;
-        window.scrollTo({top:top, behavior:'smooth'});
-      }
-    });
-  });
-
-  // "Understood" buttons: a countdown starts once the card scrolls into view,
-  // forcing a few seconds of read-time before it becomes clickable.
-  var buttons = document.querySelectorAll('.confirm-btn');
-
-  function startCountdown(btn){
-    if(btn.dataset.started) return;
-    btn.dataset.started = "true";
-    var seconds = parseInt(btn.dataset.seconds, 10) || 4;
-    btn.innerHTML = '<span class="ring"></span> Basaha una… (' + seconds + 's)';
-
-    var timer = setInterval(function(){
-      seconds -= 1;
-      if(seconds > 0){
-        btn.innerHTML = '<span class="ring"></span> Basaha una… (' + seconds + 's)';
-      } else {
-        clearInterval(timer);
-        btn.disabled = false;
-        btn.classList.add('ready');
-        btn.textContent = "Nasabtan ✓ Klik para mo-confirm";
-      }
-    }, 1000);
-  }
-
-  // ---------- SCROLL LOCK: can't reach the next rule until this one is confirmed ----------
-  var cardList = Array.prototype.slice.call(document.querySelectorAll('.card'));
-  var lockBuffer = 28;
-  var lockBar = document.getElementById('lockBar');
-  var lockText = document.getElementById('lockText');
-  var progressFill = document.getElementById('progressFill');
-  var progressCount = document.getElementById('progressCount');
-  var totalCards = cardList.length;
-
-  function firstLockedCard(){
-    for(var i=0;i<cardList.length;i++){
-      if(!cardList[i].classList.contains('card-done')) return cardList[i];
-    }
-    return null;
-  }
-
-  function getMaxAllowedScroll(){
-    var target = firstLockedCard();
-    if(!target) return Infinity; // everything confirmed — free scroll
-    var rect = target.getBoundingClientRect();
-    var cardBottomPageY = rect.bottom + window.pageYOffset;
-    var maxAllowed = cardBottomPageY - window.innerHeight + lockBuffer;
-    return Math.max(maxAllowed, 0);
-  }
-
-  function updateProgressUI(){
-    var doneCount = cardList.filter(function(c){ return c.classList.contains('card-done'); }).length;
-    progressCount.textContent = doneCount + ' / ' + totalCards;
-    progressFill.style.width = Math.round((doneCount/totalCards)*100) + '%';
-    if(doneCount >= totalCards){
-      lockBar.classList.add('all-done');
-      lockText.textContent = 'Nahuman! Nabasa ug na-confirm na ang tanang lagda.';
-      setTimeout(function(){ lockBar.classList.add('hide'); }, 2200);
-    } else {
-      var next = firstLockedCard();
-      var title = next ? next.querySelector('h3') : null;
-      lockText.textContent = title
-        ? 'Basaha ug klik ang "Nasabtan" sa: ' + title.textContent.replace(/\s+/g,' ').trim()
-        : 'Basaha ug klik ang "Nasabtan" sa matag lagda aron makapadayon';
-    }
-  }
-
-  var clampTicking = false;
-  function clampScroll(){
-    var maxAllowed = getMaxAllowedScroll();
-    if(window.scrollY > maxAllowed){
-      window.scrollTo(0, maxAllowed);
-    }
-  }
-  function requestClamp(){
-    if(!clampTicking){
-      window.requestAnimationFrame(function(){
-        clampScroll();
-        clampTicking = false;
-      });
-      clampTicking = true;
-    }
-  }
-
-  window.addEventListener('scroll', requestClamp, {passive:true});
-  window.addEventListener('resize', function(){ clampScroll(); updateProgressUI(); });
-
-  buttons.forEach(function(btn){
-    btn.addEventListener('click', function(){
-      if(!btn.classList.contains('ready')) return;
-      btn.classList.remove('ready');
-      btn.classList.add('done');
-      btn.innerHTML = '<span class="check">✓</span> Nasabtan';
-      btn.disabled = true;
-      var card = btn.closest('.card');
-      if(card) card.classList.add('card-done');
-
-      updateProgressUI();
-
-      // give a little breathing room / nudge toward the next rule once unlocked
-      window.requestAnimationFrame(function(){
-        var maxAllowed = getMaxAllowedScroll();
-        if(maxAllowed === Infinity || maxAllowed > window.scrollY){
-          window.scrollBy({ top: 90, behavior: 'smooth' });
-        }
-      });
-    });
-  });
-
-  var observer = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if(entry.isIntersecting){
-        var btn = entry.target.querySelector('.confirm-btn');
-        if(btn) startCountdown(btn);
-      }
-    });
-  }, { threshold: 0.4 });
-
-  cardList.forEach(function(card){
-    observer.observe(card);
-  });
-
-  updateProgressUI();
-  clampScroll();
-</script>
 </body>
 </html>
