@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Bhouse RULES — Bhouse Rules</title>
+<title>Bhouse RULES — Bhouse Rules </title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&amp;family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
 <style>
@@ -216,6 +216,28 @@
   }
   .card.card-done{ box-shadow:0 0 0 1.5px var(--sage-ink) inset; }
 
+  /* ---------- LOCK PROGRESS BAR ---------- */
+  .lock-bar{
+    position:fixed; left:0; right:0; bottom:0; z-index:60;
+    background:var(--ink); color:var(--paper);
+    padding:12px 22px; display:flex; align-items:center; justify-content:center; gap:14px;
+    font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.3px;
+    box-shadow:0 -6px 24px rgba(0,0,0,0.18);
+    transition:transform .35s ease, opacity .35s ease;
+  }
+  .lock-bar .lock-icon{font-size:14px;}
+  .lock-bar .progress-track{
+    width:120px; height:5px; border-radius:999px; background:rgba(255,255,255,0.18);
+    overflow:hidden; flex:0 0 auto;
+  }
+  .lock-bar .progress-fill{
+    height:100%; width:0%; background:var(--red); transition:width .3s ease;
+  }
+  .lock-bar.all-done{ background:var(--sage-ink); }
+  .lock-bar.all-done .progress-fill{ background:var(--sage); }
+  .lock-bar.hide{ transform:translateY(120%); opacity:0; }
+  body{ padding-bottom:56px; }
+
   @media (max-width:760px){
     .navlinks{display:none;}
     .grid{grid-template-columns:1fr;}
@@ -426,6 +448,13 @@
 <p>Balay Rules · House Handbook para sa tanang boarders</p>
 <a class="back-top" href="#">Balik sa taas ↑</a>
 </footer>
+<div class="lock-bar" id="lockBar">
+  <span class="lock-icon">🔒</span>
+  <span id="lockText">Basaha ug klik ang "Nasabtan" sa matag lagda aron makapadayon</span>
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  <span id="progressCount">0 / 13</span>
+</div>
+
 <script>
   // Smooth-scroll nav links with offset for the sticky header
   document.querySelectorAll('a[href^="#"]').forEach(function(link){
@@ -469,6 +498,68 @@
     }, 1000);
   }
 
+  // ---------- SCROLL LOCK: can't reach the next rule until this one is confirmed ----------
+  var cardList = Array.prototype.slice.call(document.querySelectorAll('.card'));
+  var lockBuffer = 28;
+  var lockBar = document.getElementById('lockBar');
+  var lockText = document.getElementById('lockText');
+  var progressFill = document.getElementById('progressFill');
+  var progressCount = document.getElementById('progressCount');
+  var totalCards = cardList.length;
+
+  function firstLockedCard(){
+    for(var i=0;i<cardList.length;i++){
+      if(!cardList[i].classList.contains('card-done')) return cardList[i];
+    }
+    return null;
+  }
+
+  function getMaxAllowedScroll(){
+    var target = firstLockedCard();
+    if(!target) return Infinity; // everything confirmed — free scroll
+    var rect = target.getBoundingClientRect();
+    var cardBottomPageY = rect.bottom + window.pageYOffset;
+    var maxAllowed = cardBottomPageY - window.innerHeight + lockBuffer;
+    return Math.max(maxAllowed, 0);
+  }
+
+  function updateProgressUI(){
+    var doneCount = cardList.filter(function(c){ return c.classList.contains('card-done'); }).length;
+    progressCount.textContent = doneCount + ' / ' + totalCards;
+    progressFill.style.width = Math.round((doneCount/totalCards)*100) + '%';
+    if(doneCount >= totalCards){
+      lockBar.classList.add('all-done');
+      lockText.textContent = 'Nahuman! Nabasa ug na-confirm na ang tanang lagda.';
+      setTimeout(function(){ lockBar.classList.add('hide'); }, 2200);
+    } else {
+      var next = firstLockedCard();
+      var title = next ? next.querySelector('h3') : null;
+      lockText.textContent = title
+        ? 'Basaha ug klik ang "Nasabtan" sa: ' + title.textContent.replace(/\s+/g,' ').trim()
+        : 'Basaha ug klik ang "Nasabtan" sa matag lagda aron makapadayon';
+    }
+  }
+
+  var clampTicking = false;
+  function clampScroll(){
+    var maxAllowed = getMaxAllowedScroll();
+    if(window.scrollY > maxAllowed){
+      window.scrollTo(0, maxAllowed);
+    }
+  }
+  function requestClamp(){
+    if(!clampTicking){
+      window.requestAnimationFrame(function(){
+        clampScroll();
+        clampTicking = false;
+      });
+      clampTicking = true;
+    }
+  }
+
+  window.addEventListener('scroll', requestClamp, {passive:true});
+  window.addEventListener('resize', function(){ clampScroll(); updateProgressUI(); });
+
   buttons.forEach(function(btn){
     btn.addEventListener('click', function(){
       if(!btn.classList.contains('ready')) return;
@@ -478,6 +569,16 @@
       btn.disabled = true;
       var card = btn.closest('.card');
       if(card) card.classList.add('card-done');
+
+      updateProgressUI();
+
+      // give a little breathing room / nudge toward the next rule once unlocked
+      window.requestAnimationFrame(function(){
+        var maxAllowed = getMaxAllowedScroll();
+        if(maxAllowed === Infinity || maxAllowed > window.scrollY){
+          window.scrollBy({ top: 90, behavior: 'smooth' });
+        }
+      });
     });
   });
 
@@ -490,9 +591,12 @@
     });
   }, { threshold: 0.4 });
 
-  document.querySelectorAll('.card').forEach(function(card){
+  cardList.forEach(function(card){
     observer.observe(card);
   });
+
+  updateProgressUI();
+  clampScroll();
 </script>
 </body>
 </html>
